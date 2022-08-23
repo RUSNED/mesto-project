@@ -1,0 +1,92 @@
+@import url(../vendor/normalize.css);
+
+@import url(../vendor/fonts.css);
+
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__user/profile__user.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__description/profile__description.css);
+@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+
+
+.elements {
+  width: 100%;
+  margin-top: 51px;
+}
+
+.element {
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  grid-template-rows: repeat(2, 362px);
+  grid-gap: 20px 17px;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 10%;
+}
+
+.element__image {
+  width: 282px;
+  width: 282px;
+  display: block;
+  object-fit: cover;
+}
+
+.element__card {
+  max-width: 282px;
+}
+.element__description {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  align-items: center;
+}
+
+.element__place {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  margin: 25px 15px 21px 21px;
+}
+
+.element__like-button {
+    background: url(../images/Like.svg);
+    width: 22px;
+    height: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: 0;
+    margin-right: 20px;
+}
+
+.element__like-button:hover {
+    opacity: 0.5;
+}
+
+.footer {
+  max-width: 388px;
+  padding-top: 66px;
+  margin-left: 200px;
+  padding-bottom: 60px;
+}
+
+.footer__author {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+}
