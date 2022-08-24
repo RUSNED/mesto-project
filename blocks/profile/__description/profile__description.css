@@ -7,3 +7,12 @@
   padding-top: 16px;
   text-align: start;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__description {
+    text-align: center;
+    font-size: 14px;
+    line-height: 17px;
+    padding-top: 14px;
+  }
+}
