@@ -6,4 +6,6 @@
     text-rendering: optimizeLegibility;
     background-color: black;
     box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
 }
