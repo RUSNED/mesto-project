@@ -13,18 +13,18 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__description/profile__description.css);
-@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
-@import url(../blocks/element/__image/index__image.css);
-@import url(../blocks/element/__card/index__card.css);
-@import url(../blocks/element/__description/index__description.css);
-@import url(../blocks/element/__place/index__place.css);
-@import url(../blocks/element/__like-button/index__like-button.css);
-@import url(../blocks/element/__like-button/_active/index__like-button_active.css);
+@import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__card/element__card.css);
+@import url(../blocks/element/__description/element__description.css);
+@import url(../blocks/element/__place/element__place.css);
+@import url(../blocks/element/__like-button/element__like-button.css);
+@import url(../blocks/element/__like-button/_active/element__like-button_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);
