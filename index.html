@@ -24,17 +24,17 @@
             />
             <div class="profile__info">
               <div class="profile__edit">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
                 <button id="openButton" class="profile__edit-button" type="button"></button>
               </div>
-              <p class="profile__description">Исследователь океана</p>
+              <p id="profileJob" class="profile__description">Исследователь океана</p>
             </div>
           </div>
-          <button id="openButtonProfile" class="profile__add-button" type="button"></button>
+          <button id="cardButton" class="profile__add-button" type="button"></button>
         </section>
 
-        <section class="elements">
-          <ul class="element">
+        <section  class="elements">
+          <ul id="cardContainer" class="element">
             <li class="element__card">
               <img
                 class="element__image"
@@ -127,10 +127,23 @@
                 placeholder="Вид деятельности"
               />
             </fieldset>
-            <button class="popup__button" type="submit">Сохранить</button>
+            <button id="saveButton" class="popup__button" type="submit">Сохранить</button>
           </form>
           <button id="closeButton" class="popup__close-button" type="button"></button>
       </div>
     </div>
+    <template id="elementTemplate">
+      <li class="element__card">
+        <img
+          class="element__image"
+          src="./images/Karachaevsk.png"
+          alt="Карачаевск"
+        />
+        <div class="element__description">
+          <h2 class="element__place">Карачаевск</h2>
+          <button class="element__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
   </body>
 </html>
