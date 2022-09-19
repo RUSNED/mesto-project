@@ -143,8 +143,8 @@ const like = cardElement.querySelector(".element__like-button");
 const buttonTrash = cardElement.querySelector(".element__trash");
 buttonTrash.addEventListener ('click', handleDelete);
   function handleDelete (event){
-    const currentCard = event.target.closest (".element__card");
-    currentCard.remove()
+    const trashCard = event.target.closest (".element__card");
+    trashCard.remove()
 };
 }
 function render() {
