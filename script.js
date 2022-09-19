@@ -139,9 +139,14 @@ const like = cardElement.querySelector(".element__like-button");
   like.addEventListener('click', function (event) {
     event.target.classList.toggle("element__like-button_active");
   });
-  }
-//удаление
-
+   //удаление
+const buttonTrash = cardElement.querySelector(".element__trash");
+buttonTrash.addEventListener ('click', handleDelete);
+  function handleDelete (event){
+    const currentCard = event.target.closest (".element__card");
+    currentCard.remove()
+};
+}
 function render() {
   placeInfo.forEach(cardActive);
 }
