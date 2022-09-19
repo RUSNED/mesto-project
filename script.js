@@ -1,93 +1,151 @@
-const body = document.querySelector('body');
-const popup = document.querySelector('#popup');
-const popupProfile = document.querySelector('#popupProfile');
-const openButton = document.querySelector('#openButton');
-const closeButton = document.querySelector('#closeButton');
+const body = document.querySelector("body");
 
-function openPopup (){
-    popup.classList.add ('popup_opened');
+//popup профиль
+const popup = document.querySelector("#popup");
+const popupProfile = document.querySelector("#popupProfile");
+const openButton = document.querySelector("#openButton");
+const closeButton = document.querySelector("#closeButton");
+
+function openPopup() {
+  popup.classList.add("popup_opened");
 }
 
-function closePopup (){
-    popup.classList.remove ('popup_opened');
+function closePopup() {
+  popup.classList.remove("popup_opened");
 }
 
-openButton.addEventListener('click',function () {
-    openPopup();
+openButton.addEventListener("click", function () {
+  openPopup();
 });
 
-closeButton.addEventListener('click',function () {
+closeButton.addEventListener("click", function () {
+  closePopup();
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target === popup) {
     closePopup();
+  }
 });
 
-document.addEventListener('click', (e) => {
-    if(e.target === popup) { 
-        closePopup();
+//popup карточки
+const popupCard = document.querySelector("#popupCard");
+const openButtonCard = document.querySelector("#openButtonCard");
+const closeButtonCard = document.querySelector("#closeButtonCard");
+
+function openPopupCard() {
+  popupCard.classList.add("popup_openedCard");
+}
+
+function closePopupCard() {
+  popupCard.classList.remove("popup_openedCard");
+}
+
+openButtonCard.addEventListener("click", function () {
+  openPopupCard();
+});
+
+closeButtonCard.addEventListener("click", function () {
+  closePopupCard();
+});
+const saveButtonCard = document.querySelector("#saveButtonCard");
+saveButtonCard.addEventListener("click", function () {
+  closePopupCard(popup);
+});
+
+document.addEventListener("click", (e) => {
+    if (e.target === popupCard) {
+      closePopupCard();
     }
-});
-
-const elementCard = document.querySelectorAll('.element__card');
-const like = document.querySelectorAll('.element__like-button');
-
-like.forEach(function(likeIcon) {
-  likeIcon.addEventListener('click', function(ex) {
-    likeIcon.classList.toggle('element__like-button_active');
   });
-});
 
 
-// Находим форму в DOM
-const formElement = document.querySelector('#popup')
+//ввод имени в профиль
+const formElement = document.querySelector("#popup"); // Находим форму в DOM
 // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-const nameInput = document.querySelector('#profile__name');// Воспользуйтесь инструментом .querySelector()
-const jobInput = document.querySelector('#profile-description');// Воспользуйтесь инструментом .querySelector()
-
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function formSubmitHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
-
-    // Получите значение полей jobInput и nameInput из свойства value
-    nameInput.getAttribute('value');
-    jobInput.getAttribute('value');
-    // Выберите элементы, куда должны быть вставлены значения полей
-    const profileName = document.querySelector('#profileName');
-    const profileJob = document.querySelector('#profileJob');
-    // Вставьте новые значения с помощью textContent
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
+const nameInput = document.querySelector("#profile__name"); // Воспользуйтесь инструментом .querySelector()
+const jobInput = document.querySelector("#profile-description"); // Воспользуйтесь инструментом .querySelector()
+function formSubmitHandler(evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Получите значение полей jobInput и nameInput из свойства value
+  nameInput.getAttribute("value");
+  jobInput.getAttribute("value");
+  // Выберите элементы, куда должны быть вставлены значения полей
+  const profileName = document.querySelector("#profileName");
+  const profileJob = document.querySelector("#profileJob");
+  // Вставьте новые значения с помощью textContent
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
 }
-
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler); 
+formElement.addEventListener("submit", formSubmitHandler);
 
-const saveButton = document.querySelector('#saveButton');
-saveButton.addEventListener('click', function() {
+const saveButton = document.querySelector("#saveButton");
+saveButton.addEventListener("click", function () {
   closePopup(popup);
-})
-
-
-const cardContainer = document.querySelector('#cardContainer');
-
-function cardActive () {
-    const elementTemplate = document.querySelector('#elementTemplate').content;
-    const cardElement = elementTemplate.querySelector('.element__card').cloneNode(true);
-
-    cardElement.querySelector('.element__image').src = "./images/Karachaevsk.png";
-    cardElement.querySelector('.element__place').textContent = 'Дюк Корморант';
-
-    cardContainer.prepend(cardElement); 
-}
-
-
-cardButton.addEventListener('click',function () {
-    cardActive();
-    
 });
 
+//создание карточек на странице из массива
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+const cardContainer = document.querySelector("#cardContainer");
+const elementTemplate = document.querySelector("#elementTemplate").content;
+
+const placeInfo = initialCards.map(function (item) {
+  return {
+    name: item.name,
+    link: item.link,
+  };
+});
+
+//создание новой карточки
+function cardActive({ name, link }) {
+  const cardElement = elementTemplate
+    .querySelector(".element__card")
+    .cloneNode(true);
+  cardElement.querySelector(".element__place").textContent = name;
+  cardElement.querySelector(".element__image").src = link;
+  cardElement.querySelector(".element__image").alt = name;
+  cardContainer.prepend(cardElement);
+//лайки
+const like = cardElement.querySelector(".element__like-button");
+  like.addEventListener('click', function (event) {
+    event.target.classList.toggle("element__like-button_active");
+  });
+  }
+//удаление
+
+function render() {
+  placeInfo.forEach(cardActive);
+}
+
+render();
 
 

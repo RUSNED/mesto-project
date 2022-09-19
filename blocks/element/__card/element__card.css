@@ -1,3 +1,4 @@
 .element__card {
   max-width: 282px;
+  position: relative;
 }
