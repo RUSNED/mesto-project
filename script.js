@@ -1,91 +1,28 @@
-const body = document.querySelector("body");
-
 //popup профиль
+const body = document.querySelector("body");
 const popup = document.querySelector("#popup");
 const popupProfile = document.querySelector("#popupProfile");
 const openButton = document.querySelector("#openButton");
 const closeButton = document.querySelector("#closeButton");
+const formElement = document.querySelector("#popup");
 
-function openPopup() {
-  popup.classList.add("popup_opened");
-}
-
-function closePopup() {
-  popup.classList.remove("popup_opened");
-}
-
-openButton.addEventListener("click", function () {
-  openPopup();
-});
-
-closeButton.addEventListener("click", function () {
-  closePopup();
-});
-
-document.addEventListener("click", (e) => {
-  if (e.target === popup) {
-    closePopup();
-  }
-});
+//изменение имени
+const nameInput = document.querySelector("#profile__name");
+const jobInput = document.querySelector("#profile-description");
+const profileName = document.querySelector("#profileName");
+const profileJob = document.querySelector("#profileJob");
+const saveButton = document.querySelector("#saveButton");
 
 //popup карточки
 const popupCard = document.querySelector("#popupCard");
 const openButtonCard = document.querySelector("#openButtonCard");
 const closeButtonCard = document.querySelector("#closeButtonCard");
 
-function openPopupCard() {
-  popupCard.classList.add("popup_openedCard");
-}
-
-function closePopupCard() {
-  popupCard.classList.remove("popup_openedCard");
-}
-
-openButtonCard.addEventListener("click", function () {
-  openPopupCard();
-});
-
-closeButtonCard.addEventListener("click", function () {
-  closePopupCard();
-});
-const saveButtonCard = document.querySelector("#saveButtonCard");
-saveButtonCard.addEventListener("click", function () {
-  closePopupCard(popup);
-});
-
-document.addEventListener("click", (e) => {
-    if (e.target === popupCard) {
-      closePopupCard();
-    }
-  });
-
-
-//ввод имени в профиль
-const formElement = document.querySelector("#popup"); // Находим форму в DOM
-// Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-const nameInput = document.querySelector("#profile__name"); // Воспользуйтесь инструментом .querySelector()
-const jobInput = document.querySelector("#profile-description"); // Воспользуйтесь инструментом .querySelector()
-function formSubmitHandler(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Получите значение полей jobInput и nameInput из свойства value
-  nameInput.getAttribute("value");
-  jobInput.getAttribute("value");
-  // Выберите элементы, куда должны быть вставлены значения полей
-  const profileName = document.querySelector("#profileName");
-  const profileJob = document.querySelector("#profileJob");
-  // Вставьте новые значения с помощью textContent
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-}
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener("submit", formSubmitHandler);
-
-const saveButton = document.querySelector("#saveButton");
-saveButton.addEventListener("click", function () {
-  closePopup(popup);
-});
+//создание новой карточки
+const cardContainer = document.querySelector("#cardContainer");
+const elementTemplate = document.querySelector("#elementTemplate").content;
+const cardName = document.querySelector("#cardName");
+const cardLink = document.querySelector("#cardLink");
 
 //создание карточек на странице из массива
 const initialCards = [
@@ -115,9 +52,6 @@ const initialCards = [
   },
 ];
 
-const cardContainer = document.querySelector("#cardContainer");
-const elementTemplate = document.querySelector("#elementTemplate").content;
-
 const placeInfo = initialCards.map(function (item) {
   return {
     name: item.name,
@@ -125,7 +59,6 @@ const placeInfo = initialCards.map(function (item) {
   };
 });
 
-//создание новой карточки
 function cardActive({ name, link }) {
   const cardElement = elementTemplate
     .querySelector(".element__card")
@@ -134,18 +67,21 @@ function cardActive({ name, link }) {
   cardElement.querySelector(".element__image").src = link;
   cardElement.querySelector(".element__image").alt = name;
   cardContainer.prepend(cardElement);
-//лайки
-const like = cardElement.querySelector(".element__like-button");
-  like.addEventListener('click', function (event) {
+
+
+  //лайки
+  const like = cardElement.querySelector(".element__like-button");
+  like.addEventListener("click", function (event) {
     event.target.classList.toggle("element__like-button_active");
   });
-   //удаление
-const buttonTrash = cardElement.querySelector(".element__trash");
-buttonTrash.addEventListener ('click', handleDelete);
-  function handleDelete (event){
-    const trashCard = event.target.closest (".element__card");
-    trashCard.remove()
-};
+
+  //удаление
+  const buttonTrash = cardElement.querySelector(".element__trash");
+  buttonTrash.addEventListener("click", handleDelete);
+  function handleDelete(event) {
+    const trashCard = event.target.closest(".element__card");
+    trashCard.remove();
+  }
 }
 function render() {
   placeInfo.forEach(cardActive);
@@ -153,4 +89,68 @@ function render() {
 
 render();
 
+//функция открытия/закрытия попап профиль
+function openPopup() {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup() {
+  popup.classList.remove("popup_opened");
+}
+
+openButton.addEventListener("click", function () {
+  openPopup();
+});
+
+closeButton.addEventListener("click", function () {
+  closePopup();
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    closePopup();
+  }
+});
+
+//функция открытия/закрытия попап карточки
+function openPopupCard() {
+  popupCard.classList.add("popup_openedCard");
+}
+
+function closePopupCard() {
+  popupCard.classList.remove("popup_openedCard");
+}
+
+openButtonCard.addEventListener("click", function () {
+  openPopupCard();
+});
+
+closeButtonCard.addEventListener("click", function () {
+  closePopupCard();
+});
+const saveButtonCard = document.querySelector("#saveButtonCard");
+saveButtonCard.addEventListener("click", function () {
+  closePopupCard(popup);
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target === popupCard) {
+    closePopupCard();
+  }
+});
+
+//функция редактирования профиля
+function formSubmitHandler(evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  nameInput.getAttribute("value"); // Получите значение полей jobInput и nameInput из свойства value
+  jobInput.getAttribute("value");
+  // Вставьте новые значения с помощью textContent
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+}// Прикрепляем обработчик к форме он будет следить за событием “submit” - «отправка»
+formElement.addEventListener("submit", formSubmitHandler);
+//кнопка сохранения
+saveButton.addEventListener("click", function () {
+  closePopup(popup);
+});
 
